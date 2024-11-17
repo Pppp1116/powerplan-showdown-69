@@ -7,10 +7,12 @@ export interface PowerPlan {
   wirelessAdapterPower: string;
   usbSettings: string;
   pciExpressPower: string;
+  isCustom?: boolean;
 }
 
 export async function getPowerPlans(): Promise<PowerPlan[]> {
-  // In a real implementation, this would use Windows APIs
+  // In a real implementation, this would use Windows APIs to get all power plans
+  // including custom ones from the system
   return [
     {
       id: "381b4222-f694-41f0-9685-ff5bb260df2e",
@@ -31,6 +33,28 @@ export async function getPowerPlans(): Promise<PowerPlan[]> {
       wirelessAdapterPower: "Maximum Performance",
       usbSettings: "Disabled",
       pciExpressPower: "Off"
+    },
+    {
+      id: "custom-1",
+      name: "Ultimate Gaming",
+      processorPerformance: 100,
+      systemCooling: 100,
+      hardDiskTimeout: 0,
+      wirelessAdapterPower: "Maximum Performance",
+      usbSettings: "Disabled",
+      pciExpressPower: "Off",
+      isCustom: true
+    },
+    {
+      id: "custom-2",
+      name: "Silent Gaming",
+      processorPerformance: 95,
+      systemCooling: 70,
+      hardDiskTimeout: 10,
+      wirelessAdapterPower: "Medium",
+      usbSettings: "Balanced",
+      pciExpressPower: "Moderate savings",
+      isCustom: true
     }
   ];
 }

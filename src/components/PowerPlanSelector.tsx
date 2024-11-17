@@ -1,6 +1,7 @@
 import { PowerPlan } from "@/lib/powerPlan";
 import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
 
 interface PowerPlanSelectorProps {
   plans: PowerPlan[];
@@ -19,8 +20,11 @@ export function PowerPlanSelector({ plans, selectedPlan, onSelect, label }: Powe
         </SelectTrigger>
         <SelectContent>
           {plans.map((plan) => (
-            <SelectItem key={plan.id} value={plan.id}>
-              {plan.name}
+            <SelectItem key={plan.id} value={plan.id} className="flex items-center justify-between">
+              <span>{plan.name}</span>
+              {plan.isCustom && (
+                <Badge variant="secondary" className="ml-2">Custom</Badge>
+              )}
             </SelectItem>
           ))}
         </SelectContent>
@@ -46,6 +50,24 @@ export function PowerPlanSelector({ plans, selectedPlan, onSelect, label }: Powe
                 <span>Hard Disk Timeout</span>
                 <span className="text-gaming-100">
                   {plans.find(p => p.id === selectedPlan)?.hardDiskTimeout} min
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Wireless Adapter Power</span>
+                <span className="text-gaming-100">
+                  {plans.find(p => p.id === selectedPlan)?.wirelessAdapterPower}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>USB Settings</span>
+                <span className="text-gaming-100">
+                  {plans.find(p => p.id === selectedPlan)?.usbSettings}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>PCI Express Power</span>
+                <span className="text-gaming-100">
+                  {plans.find(p => p.id === selectedPlan)?.pciExpressPower}
                 </span>
               </div>
             </>
