@@ -2,8 +2,10 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { Installer } from './installer';
 
 const execAsync = promisify(exec);
+const installer = new Installer();
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -24,7 +26,13 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  // Check if this is the first run
+  const isFirstRun = await installer.checkFirstRun();
+  if (isFirstRun) {
+    console.log('First run - setting up application...');
+  }
+
   createWindow();
 
   ipcMain.handle('get-power-plans', async () => {
@@ -78,6 +86,14 @@ app.whenReady().then(() => {
       networkScore: Math.random() * 1000 + 2000,
       timestamp: Date.now()
     };
+  });
+
+  ipcMain.handle('uninstall-app', async () => {
+    const success = await installer.uninstall();
+    if (success) {
+      app.quit();
+    }
+    return success;
   });
 });
 
