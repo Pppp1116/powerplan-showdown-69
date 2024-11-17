@@ -1,4 +1,84 @@
-# Welcome to your Lovable project
+# Power Plan Showdown
+
+## Tutorial Detalhado de Instalação e Execução
+
+### Pré-requisitos
+
+1. **Node.js e npm**
+   - Instale o Node.js através do [site oficial](https://nodejs.org/)
+   - Verifique a instalação abrindo o terminal e digitando:
+     ```
+     node --version
+     npm --version
+     ```
+
+2. **Git**
+   - Instale o Git através do [site oficial](https://git-scm.com/)
+   - Verifique a instalação:
+     ```
+     git --version
+     ```
+
+### Passo a Passo para Execução
+
+1. **Clone o Repositório**
+   ```bash
+   git clone <URL_DO_REPOSITÓRIO>
+   cd powerplan-showdown
+   ```
+
+2. **Instale as Dependências**
+   ```bash
+   npm install
+   ```
+
+3. **Execute o Programa**
+   ```bash
+   npm run dev
+   ```
+   - Aguarde alguns segundos até que a janela do aplicativo abra
+   - Se não abrir automaticamente, acesse http://localhost:5173 no navegador
+
+### Funcionalidades Principais
+
+1. **Comparação de Planos de Energia**
+   - Selecione dois planos de energia diferentes
+   - Compare o desempenho entre eles
+   - Visualize gráficos detalhados de comparação
+
+2. **Benchmark do Sistema**
+   - Execute testes de benchmark completos
+   - Analise o desempenho do CPU, GPU e memória
+   - Compare resultados entre diferentes planos de energia
+
+### Resolução de Problemas Comuns
+
+1. **Erro ao Instalar Dependências**
+   - Limpe o cache do npm:
+     ```bash
+     npm cache clean --force
+     ```
+   - Delete a pasta node_modules e reinstale:
+     ```bash
+     rm -rf node_modules
+     npm install
+     ```
+
+2. **Erro ao Executar o Programa**
+   - Verifique se todas as portas necessárias estão livres
+   - Certifique-se de que o Node.js está atualizado
+   - Execute como administrador se necessário
+
+3. **Problemas de Permissão**
+   - No Windows, execute o PowerShell como administrador
+   - No Linux/Mac, use sudo se necessário
+
+### Suporte
+
+Se encontrar algum problema:
+1. Verifique as issues no GitHub
+2. Crie uma nova issue detalhando o problema
+3. Inclua logs de erro e passos para reproduzir o problema
 
 ## Project info
 
